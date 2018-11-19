@@ -2,13 +2,17 @@ package ua.hillel.Bodrug.Lesson2.Task10;
 
 public class Task10Class {
     public static void main(String[] args) {
-        int[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] a = {1, 2, 4, 3, 5, 4, 7, 8, 4};
         int n = 4;
-        try {
-            System.out.println(a[n]);
+        boolean f = false;
+        for (int i = 0; i < a.length ; i++) {
+            if (n==a[i]){
+                System.out.println(n + " находится в массиве под индексом " + i);
+                f = true;
+            }
         }
-        catch (ArrayIndexOutOfBoundsException x){
-            System.out.println("Нет элемента с таким индексом!");
+        if (f==false){
+            System.out.println("В массиве отсутствуют элементы со значением " + n);
         }
     }
 }
