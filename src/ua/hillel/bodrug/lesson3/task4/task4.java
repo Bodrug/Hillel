@@ -1,0 +1,34 @@
+package ua.hillel.bodrug.lesson3.task4;
+
+import java.util.Scanner;
+
+public class task4 {
+    public static void main(String[] args) {
+
+        /*Не совсем понял условие расчета конечного депозита, поэтому наверняка неправильно.*/
+        double x = 0;
+        Scanner info = new Scanner(System.in);
+        System.out.println("Введите свой возраст:");
+        int age = info.nextInt();
+        System.out.println("Введите возраст выхода на пенсию:");
+        double pens = info.nextInt();
+        System.out.println("Введите сумму первоначального взноса:");
+        double dep = info.nextInt();
+        System.out.println("Введите сумму ежемесячного взноса:");
+        int monthSumm = info.nextInt();
+        System.out.println("Введите процентную ставку:");
+        double perc = info.nextInt();
+        while (age <= pens){
+            System.out.println(age + " *****************");
+            for (int i = 0; i < 12; i++) {
+                x = dep*(perc/100)/12;
+                dep = dep + monthSumm + x;
+            }
+            System.out.println(dep);
+            age++;
+        }
+        System.out.println("------------------");
+        System.out.println(x);
+    }
+
+}
