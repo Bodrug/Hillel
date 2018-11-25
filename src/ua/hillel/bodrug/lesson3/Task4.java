@@ -1,8 +1,8 @@
-package ua.hillel.bodrug.lesson3.task4;
+package ua.hillel.bodrug.lesson3;
 
 import java.util.Scanner;
 
-public class task4 {
+public class Task4 {
     public static void main(String[] args) {
 
         /*Не совсем понял условие расчета конечного депозита, поэтому наверняка неправильно.*/
