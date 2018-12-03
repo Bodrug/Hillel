@@ -1,6 +1,6 @@
-package ua.hillel.bodrug.lesson2.Task8;
+package ua.hillel.bodrug.lesson2;
 
-public class task8 {
+public class Task8 {
     public static void main(String[] args) {
         int[] a = {0, -1, 4, 22, -10};
         if(a.length==0){

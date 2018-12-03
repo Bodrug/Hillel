@@ -1,8 +1,8 @@
-package ua.hillel.bodrug.lesson3.task2;
+package ua.hillel.bodrug.lesson3;
 
 import java.util.Scanner;
 
-public class task2 {
+public class Task2 {
     public static void main(String[] args) {
         Scanner text = new Scanner(System.in);
         System.out.print("Введите число:");

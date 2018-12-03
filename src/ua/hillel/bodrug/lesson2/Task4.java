@@ -1,6 +1,6 @@
-package ua.hillel.bodrug.lesson2.Task4;
+package ua.hillel.bodrug.lesson2;
 
-public class task4 {
+public class Task4 {
     public static void main(String[] args) {
         int n = 15;
         int mod;

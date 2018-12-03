@@ -1,6 +1,6 @@
-package ua.hillel.bodrug.lesson3.task1;
+package ua.hillel.bodrug.lesson3;
 
-public class task1 {
+public class Task1 {
     public static void main(String[] args) {
         int countSpace = 0;
         int countStars = 0;
