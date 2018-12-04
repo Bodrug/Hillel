@@ -1,6 +1,6 @@
-package ua.hillel.bodrug.lesson2.Task9;
+package ua.hillel.bodrug.lesson2;
 
-public class task9 {
+public class Task9 {
     public static void main(String[] args) {
         int s = 1;
         int[] a = {1,2,3,4,5,6};
