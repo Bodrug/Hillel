@@ -1,6 +1,6 @@
 package ua.hillel.bodrug.lesson5;
 
-public class ComplexNumber {
+public class ComplexNumber implements Comparable {
     final double a;
     final double b;
 
@@ -8,6 +8,7 @@ public class ComplexNumber {
         this.a = a;
         this.b = b;
     }
+
     public ComplexNumber add(ComplexNumber c){
         ComplexNumber complex = new ComplexNumber(a + c.a, b + c.b);
         return complex;
@@ -18,7 +19,8 @@ public class ComplexNumber {
         return complex;
     }
     public ComplexNumber divide (ComplexNumber c){
-        ComplexNumber complex = new ComplexNumber(((a*c.a + b*c.b)/exp(c.a,c.b)),(b*c.a-a*c.b)/exp(c.a,c.b));
+        ComplexNumber complex;
+        complex = new ComplexNumber(((a*c.a + b*c.b)/exp(c.a,c.b)),(b*c.a-a*c.b)/exp(c.a,c.b));
         return  complex;
     }
 
@@ -27,9 +29,9 @@ public class ComplexNumber {
     }
 
     public ComplexNumber mult(ComplexNumber c){
-        ComplexNumber complex = new ComplexNumber((a*c.a-b*c.b),(a*c.b+b*c.a));
-        return complex;
+        return new ComplexNumber((a*c.a-b*c.b),(a*c.b+b*c.a));
     }
+
     public static void main(String[] args) {
         ComplexNumber complex = new ComplexNumber(2,3);
         ComplexNumber complex1 = new ComplexNumber(1,2);
@@ -44,4 +46,31 @@ public class ComplexNumber {
         ComplexNumber complexMult = complex.mult(complex1);
         System.out.println("complexMult = " + complexMult.a + "+" +complexMult.b + "*i");
     }
+
+    @Override
+    public Comparable add(Comparable comparable) {
+        ComplexNumber c = (ComplexNumber) comparable;
+        return new ComplexNumber(a + c.a, b + c.b);
+    }
+
+    @Override
+    public Comparable subtract(Comparable comparable) {
+        ComplexNumber c = (ComplexNumber) comparable;
+        return new ComplexNumber(a - c.a, b-c.b);
+    }
+
+    @Override
+    public Comparable divide(Comparable comparable) {
+        ComplexNumber c = (ComplexNumber) comparable;
+        ComplexNumber complex = new ComplexNumber(((a*c.a + b*c.b)/exp(c.a,c.b)),(b*c.a-a*c.b)/exp(c.a,c.b));
+        return  complex;
+    }
+
+    @Override
+    public Comparable mult(Comparable comparable) {
+        ComplexNumber c = (ComplexNumber) comparable;
+        ComplexNumber complex = new ComplexNumber((a*c.a-b*c.b),(a*c.b+b*c.a));
+        return complex;
+    }
+
 }
