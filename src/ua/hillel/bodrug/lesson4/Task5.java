@@ -7,9 +7,9 @@ import java.util.Scanner;
  */
 public class Task5 {
     public static void main(String[] args) {
-     PrintFibonachi();
+     printFibonachi();
     }
-    public static void PrintFibonachi(){
+    public static void printFibonachi(){
         Scanner str = new Scanner(System.in);
         System.out.println("Укажите, сколько нужно вывести чисел Фибоначчи");
         int count = str.nextInt();

@@ -5,7 +5,7 @@ package ua.hillel.bodrug.lesson4;
 public class Task2 {
     public static void main(String[] args) {
         int arr[] = {10,10,10,11,10,10,10,10,10,10};
-        int x = SearchUnnormCup(arr);
+        int x = searchUnnormCup(arr);
         if (x==0){
             System.out.println("Банки с непраильным весом нет.");
         }
@@ -14,7 +14,7 @@ public class Task2 {
         }
     }
 
-    public static int SearchUnnormCup(int[] a){
+    public static int searchUnnormCup(int[] a){
         /*Описание решения задачи:
         -Берем из первой банки 1 табл., из второй 2 табл., из третьей 3 табл. и т.д.
         -Взвешиваем все отобранные таблетки.

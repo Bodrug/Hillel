@@ -8,20 +8,20 @@ public class Task1 {
     public static void main(String[] args) {
         int [] a = {1,2,4,5,6};
         int b = 3;
-        int[] newArray = GetNewArray(a,b);
+        int[] newArray = getNewArray(a,b);
         System.out.println(Arrays.toString(newArray));
     }
 
-    public static int[] GetNewArray(int[] a, int b){
+    public static int[] getNewArray(int[] a, int b){
         int[]arr = new int[a.length+1];
         for (int i = 0; i < a.length ; i++) {
             arr[i] = a[i];
         }
         arr[a.length] = b;
-        return BubbleSort(arr);
+        return bubbleSort(arr);
     }
 
-    public static int[] BubbleSort(int[] arr){
+    public static int[] bubbleSort(int[] arr){
         for(int i = arr.length-1; i>0; i--){
             for (int j=0; j<i; j++){
                 if (arr[j] > arr[j+1]){
