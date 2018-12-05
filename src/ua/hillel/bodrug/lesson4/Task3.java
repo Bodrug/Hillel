@@ -19,6 +19,7 @@ public class Task3 {
 
                 if ((z % i) == 0) {
                     isSimple = false;
+                    break;
                 }
             }
             if (isSimple) System.out.println(z);

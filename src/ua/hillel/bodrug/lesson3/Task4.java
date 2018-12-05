@@ -6,18 +6,18 @@ public class Task4 {
     public static void main(String[] args) {
 
         /*Не совсем понял условие расчета конечного депозита, поэтому наверняка неправильно.*/
-        double x = 0;
+        int x = 0;
         Scanner info = new Scanner(System.in);
         System.out.println("Введите свой возраст:");
         int age = info.nextInt();
         System.out.println("Введите возраст выхода на пенсию:");
-        double pens = info.nextInt();
+        int pens = info.nextInt();
         System.out.println("Введите сумму первоначального взноса:");
-        double dep = info.nextInt();
+        int dep = info.nextInt();
         System.out.println("Введите сумму ежемесячного взноса:");
         int monthSumm = info.nextInt();
         System.out.println("Введите процентную ставку:");
-        double perc = info.nextInt();
+        int perc = info.nextInt();
         while (age <= pens){
             System.out.println(age + " *****************");
             for (int i = 0; i < 12; i++) {

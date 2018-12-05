@@ -11,7 +11,7 @@ public class Task10 {
                 f = true;
             }
         }
-        if (f==false){
+        if (!f){
             System.out.println("В массиве отсутствуют элементы со значением " + n);
         }
     }
