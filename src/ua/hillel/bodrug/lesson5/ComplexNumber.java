@@ -47,30 +47,33 @@ public class ComplexNumber implements Comparable {
         System.out.println("complexMult = " + complexMult.a + "+" +complexMult.b + "*i");
     }
 
-    @Override
+
     public Comparable add(Comparable comparable) {
         ComplexNumber c = (ComplexNumber) comparable;
         return new ComplexNumber(a + c.a, b + c.b);
     }
 
-    @Override
+
     public Comparable subtract(Comparable comparable) {
         ComplexNumber c = (ComplexNumber) comparable;
         return new ComplexNumber(a - c.a, b-c.b);
     }
 
-    @Override
+
     public Comparable divide(Comparable comparable) {
         ComplexNumber c = (ComplexNumber) comparable;
         ComplexNumber complex = new ComplexNumber(((a*c.a + b*c.b)/exp(c.a,c.b)),(b*c.a-a*c.b)/exp(c.a,c.b));
         return  complex;
     }
 
-    @Override
+
     public Comparable mult(Comparable comparable) {
         ComplexNumber c = (ComplexNumber) comparable;
         ComplexNumber complex = new ComplexNumber((a*c.a-b*c.b),(a*c.b+b*c.a));
         return complex;
     }
 
+    public int compareTo(Object o) {
+        return 0;
+    }
 }
