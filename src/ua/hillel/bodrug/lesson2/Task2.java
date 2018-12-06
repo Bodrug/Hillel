@@ -8,8 +8,8 @@ public class Task2 {
             x[i] = i+1;
         }
         //Для проверки выведем в консоль
-        for (int i = 0; i <x.length ; i++) {
-            System.out.println(x[i]);
+        for (int aX : x) {
+            System.out.println(aX);
         }
     }
 }

@@ -1,5 +1,7 @@
 package ua.hillel.bodrug.lesson1;
 
+import static java.lang.System.*;
+
 public class Task1 {
     public static void main(String[] args) {
         String[][] a = new String[][]
@@ -10,12 +12,12 @@ public class Task1 {
                         {" ", "*", " ", " ", "*", " ", " ", "*"},
                         {"*", "*", "*", " ", "*", "*", "*", " "},
                 };
-        for (int i = 0; i < a.length; i++){
-            for(int j=0; j < a[i].length; j++){
+        for (String[] anA : a) {
+            for (String anAnA : anA) {
 
-                System.out.print(a[i][j]);
+                out.print(anAnA);
             }
-            System.out.println();
+            out.println();
         }
     }
 }
