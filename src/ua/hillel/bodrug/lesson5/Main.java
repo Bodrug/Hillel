@@ -44,9 +44,21 @@ public class Main {
         complexes1[4] = new Complex(3,1);
         Arrays.sort(complexes1);
 
-
-
         Complex[] complexes2 = new Complex[complexes.length+complexes1.length];
+        int index = 0;
+        int index2 = 0;
+         while (index<complexes.length){
+            int compare = complexes[index].compareTo(complexes1[index2]);
+            if (compare<0){
+                complexes2[index] = complexes[index];
+                index2++;
+            }
+            else complexes2[index2] = complexes1[index2];
+            index++;
+         }
+
+
+        /*Complex[] complexes2 = new Complex[complexes.length+complexes1.length];
         int index = 0;
         for (int i = 0; i < complexes.length; i++) {
             complexes2[i] = new Complex(complexes[i].a,complexes[i].b);
@@ -58,7 +70,8 @@ public class Main {
             index++;
         }
 
-        Arrays.sort(complexes2);
+        Arrays.sort(complexes2);*/
+
 
 
         for (int i = 0; i < complexes.length; i++) {
