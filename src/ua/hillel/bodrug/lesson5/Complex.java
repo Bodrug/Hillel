@@ -77,6 +77,11 @@ public class Complex implements Comparable<Complex> {
 
     @Override
     public int compareTo(Complex o) {
-        return 0;
+        if ((this.a+this.b) > (o.a+o.b)){
+            return 1;
+        }
+        else {
+            return -1;
+        }
     }
 }

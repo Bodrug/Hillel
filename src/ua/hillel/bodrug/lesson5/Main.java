@@ -28,64 +28,52 @@ public class Main {
         for (int i = 0; i < 5; i++) {
             complexes[i] = new Complex(i+1,i+2);
         }*/
-        Complex[] complexes = new Complex[5];
-        complexes[0] = new Complex(3,2);
-        complexes[1] = new Complex(1,6);
-        complexes[2] = new Complex(5,2);
-        complexes[3] = new Complex(2,8);
-        complexes[4] = new Complex(6,6);
-        Arrays.sort(complexes);
+        Complex[] c1 = new Complex[5];
+        c1[0] = new Complex(3,2);
+        c1[1] = new Complex(1,6);
+        c1[2] = new Complex(5,2);
+        c1[3] = new Complex(2,8);
+        c1[4] = new Complex(6,6);
+        Arrays.sort(c1);
 
-        Complex[] complexes1 = new Complex[5];
-        complexes1[0] = new Complex(1,2);
-        complexes1[1] = new Complex(1,1);
-        complexes1[2] = new Complex(8,4);
-        complexes1[3] = new Complex(10,1);
-        complexes1[4] = new Complex(3,1);
-        Arrays.sort(complexes1);
+        Complex[] c2 = new Complex[5];
+        c2[0] = new Complex(1,2);
+        c2[1] = new Complex(1,1);
+        c2[2] = new Complex(8,4);
+        c2[3] = new Complex(10,1);
+        c2[4] = new Complex(3,1);
+        Arrays.sort(c2);
 
-        Complex[] complexes2 = new Complex[complexes.length+complexes1.length];
-        int index = 0;
-        int index2 = 0;
-         while (index<complexes.length){
-            int compare = complexes[index].compareTo(complexes1[index2]);
+        Complex[] complexes2 = new Complex[c1.length+c2.length];
+        int i = 0;
+        int j = 0;
+        int k = 0;
+         while (i<c1.length && j<c2.length){
+            int compare = c1[i].compareTo(c2[j]);
             if (compare<0){
-                complexes2[index] = complexes[index];
-                index2++;
+                complexes2[k] = c1[i];
+                i++;
             }
-            else complexes2[index2] = complexes1[index2];
-            index++;
+            else {
+                complexes2[k] = c2[j];
+                j++;
+            }
+             k++;
          }
 
+         while (i<c1.length){
+             complexes2[k] = c1[i];
+             i++;
+             k++;
+         }
 
-        /*Complex[] complexes2 = new Complex[complexes.length+complexes1.length];
-        int index = 0;
-        for (int i = 0; i < complexes.length; i++) {
-            complexes2[i] = new Complex(complexes[i].a,complexes[i].b);
-            index++;
-        }
-
-        for (int i = 0; i < complexes1.length; i++) {
-            complexes2[index] = new Complex(complexes1[i].a,complexes1[i].b);
-            index++;
-        }
-
-        Arrays.sort(complexes2);*/
-
-
-
-        for (int i = 0; i < complexes.length; i++) {
-            System.out.println(complexes[i].a + " " + complexes[i].b);
-        }
-        System.out.println("-----------------------------");
-        for (int i = 0; i < complexes1.length ; i++) {
-            System.out.println(complexes1[i].a + " " + complexes1[i].b);
-        }
-
-        System.out.println("---------------------------------------------");
-
-        for (int i = 0; i < complexes2.length; i++) {
-            System.out.println(complexes2[i].a + " " + complexes2[i].b);
+         while (j<c2.length){
+             complexes2[k] = c2[j];
+             j++;
+             k++;
+         }
+        for (Complex aComplexes2 : complexes2) {
+            System.out.println(aComplexes2.a + " " + aComplexes2.b);
         }
         }
 
