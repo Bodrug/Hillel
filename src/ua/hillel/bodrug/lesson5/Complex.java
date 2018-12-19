@@ -35,7 +35,7 @@ public class Complex implements Comparable<Complex> {
 
     public static void main(String[] args) {
         Complex complex = new Complex(2,3);
-        Complex complex1 = new Complex(4,5);
+        Complex complex1 = new Complex(1,2);
         Complex complexAdd = complex.add(complex1);
         System.out.println("complex = " + complex.a +"+" + complex.b + "*i");
         System.out.println("complex1 = " + complex1.a + "+" +complex1.b + "*i");
@@ -46,12 +46,6 @@ public class Complex implements Comparable<Complex> {
         System.out.println("complexDiv = " + complexDiv.a + "+" +complexDiv.b + "*i");
         Complex complexMult = complex.mult(complex1);
         System.out.println("complexMult = " + complexMult.a + "+" +complexMult.b + "*i");
-        int compare;
-        compare = complex.compareTo(complex1);
-        if (compare == 0) {
-            System.out.println("Числа равны");
-        }
-        else System.out.println("Числа не равны");
     }
 
 
@@ -83,16 +77,6 @@ public class Complex implements Comparable<Complex> {
 
     @Override
     public int compareTo(Complex o) {
-        double re1 = this.a;
-        double re2 = o.a;
-        double im1 = this.b;
-        double im2 = o.b;
-        if (re1!=re2){
-            return (int) (re1-re2);
-        }
-        else if (im1!=im2){
-            return (int) (im1-im2);
-        }
-        else return 0;
+        return 0;
     }
 }
