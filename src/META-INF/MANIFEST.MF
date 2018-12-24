@@ -1,3 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: ua.hillel.bodrug.lesson3.Task3
-
