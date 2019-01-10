@@ -1,4 +1,4 @@
-package ua.hillel.bodrug.lesson12.services;
+/*package ua.hillel.bodrug.lesson12.services;
 
 import ua.hillel.bodrug.lesson12.dao.interfaces.CourseDao;
 import ua.hillel.bodrug.lesson12.dao.staticDao.CourseDaoImpl;
@@ -16,4 +16,4 @@ public class CourseService {
         return CourseDao.create(course);
 
     }
-}
+}*/
