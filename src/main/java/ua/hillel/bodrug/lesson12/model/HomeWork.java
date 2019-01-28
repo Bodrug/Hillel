@@ -6,12 +6,14 @@ public class HomeWork {
     private Lesson lesson;
     private Task task;
     private Integer mark;
+    private Teacher teacher;
 
     public HomeWork(Integer id, Lesson lesson, Task task) {
         this.id = id;
         this.lesson = lesson;
         this.task = task;
     }
+
     public HomeWork(Lesson lesson, Task task) {
         this.id = id;
         this.lesson = lesson;

@@ -1,10 +1,24 @@
 package ua.hillel.bodrug.lesson12.model;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Teacher {
     private Integer id;
     private String name;
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    public Teacher(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public Integer getId() {
         return id;
@@ -35,4 +49,5 @@ public class Teacher {
     public int hashCode() {
         return Objects.hash(id, name);
     }
+
 }

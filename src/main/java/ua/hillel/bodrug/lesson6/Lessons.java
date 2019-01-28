@@ -1,10 +1,16 @@
 package ua.hillel.bodrug.lesson6;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Lessons {
+public class Lessons{
     public String name;
     public Tasks task;
+
+    public Lessons(String name, Tasks task) {
+        this.name = name;
+        this.task = task;
+    }
 
     @Override
     public String toString() {
@@ -42,12 +48,6 @@ public class Lessons {
     }
 
     public void setTask(Tasks task) {
-        this.task = task;
-    }
-
-    public Lessons(String name, Tasks task) {
-
-        this.name = name;
         this.task = task;
     }
 }

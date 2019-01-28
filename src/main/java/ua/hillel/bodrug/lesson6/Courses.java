@@ -1,11 +1,29 @@
 package ua.hillel.bodrug.lesson6;
 
+import ua.hillel.bodrug.lesson12.model.Lesson;
+import ua.hillel.bodrug.lesson12.model.Teacher;
+
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Courses {
+public class Courses implements Serializable {
     public String name;
     public  Teachers teacher;
+    public Lessons lesson;
     public Students student;
+
+    public Courses(Lessons lesson) {
+        this.lesson = lesson;
+    }
+
+    public Courses(Teachers teacher) {
+        this.teacher = teacher;
+    }
+
+    public Courses(Students student) {
+        this.student = student;
+    }
+
 
     public String getName() {
         return name;
@@ -38,8 +56,6 @@ public class Courses {
     public void setLesson(Lessons lesson) {
         this.lesson = lesson;
     }
-
-    public Lessons lesson;
 
     public Courses(String name, Teachers teacher, Students student, Lessons lesson) {
         this.name = name;

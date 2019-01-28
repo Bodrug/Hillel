@@ -1,4 +1,4 @@
-/*
+
 package ua.hillel.bodrug.lesson12.services;
 
 import ua.hillel.bodrug.lesson12.dao.interfaces.CourseDao;
@@ -14,8 +14,8 @@ public class CourseService {
     public static Course saveAllCourse(Course course){
         List<Lesson> lessons = course.getLessons();
         List<Student> students = course.getStudents();
-        return CourseDaoImpl.create(course);
+        return courseDao.create(course);
 
     }
 }
-*/
+

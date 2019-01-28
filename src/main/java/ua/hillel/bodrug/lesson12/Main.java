@@ -38,23 +38,17 @@ public class Main {
         List<Course> courses = IntStream.rangeClosed(1, 2)
                 .mapToObj(x ->
                         new Course(x, "course " + x, lessons,
-                                new Teacher(), students, tasks)
+                                new Teacher(x, "Teacher"+x), students, tasks)
                 ).collect(Collectors.toList());
 
 
         for (Course cours : courses) {
+            System.out.println(cours.getTeacher().getName());
             cours.showHomework();
             System.out.println("------------------------");
             System.out.println("------------------------");
         }
-        System.out.println();
-        /*System.out.println(LocalTime.now());
-        List<Teacher> teachers =
-                courses.stream()
-                        .map(Course::getTeacher)
-                        .distinct()
-                        .collect(Collectors.toList());
-        System.out.println(LocalTime.now());*/
+
 
 
     }
@@ -73,7 +67,7 @@ public class Main {
         return result;
     }
 
-    private static List<HomeWork> getHomeworks2(
+    /*private static List<HomeWork> getHomeworks2(
             List<Lesson> lessons,
             List<Task> tasks) {
         int id = 1;
@@ -86,6 +80,6 @@ public class Main {
         }
         return collect;
 
-    }
+    }*/
 
 }

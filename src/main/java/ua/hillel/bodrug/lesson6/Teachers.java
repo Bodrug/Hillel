@@ -1,8 +1,10 @@
 package ua.hillel.bodrug.lesson6;
 
+import ua.hillel.bodrug.lesson12.model.Teacher;
+
 import java.util.Objects;
 
-public class Teachers {
+public class Teachers{
     public String name;
 
     @Override

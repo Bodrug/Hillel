@@ -14,10 +14,10 @@ public class Course {
     private List<Task> tasks;
 
 
-    public Course(Integer id, String description) {
+    /*public Course(Integer id, String description, List<Lesson> lessons, Teacher teacher, List<Student> students, List<Task> tasks) {
         this.id = id;
         this.description = description;
-    }
+    }*/
 
 
 
