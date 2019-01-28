@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class CourseDaoImpl implements CourseDao{
     static private Map<Integer, Course> courses = new LinkedHashMap<>();
     static private int i = 0;
+
     @Override
     public Course create(Course course) {
         int id = i++;
