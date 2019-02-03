@@ -13,22 +13,22 @@ public class LessonDaoImpl implements LessonDao {
     static private int i = 0;
 
     @Override
-    public Lesson create(Lesson course) {
+    public Lesson create(Lesson lesson) {
         int id = i++;
-        course.setId(id);
-        lessons.put(id, course);
-        return course;
+        lesson.setId(id);
+        lessons.put(id, lesson);
+        return lesson;
     }
 
     @Override
-    public void update(Lesson course) {
-        Integer id = course.getId();
-        lessons.put(id,course);
+    public void update(Lesson lesson) {
+        Integer id = lesson.getId();
+        lessons.put(id,lesson);
     }
 
     @Override
-    public void delete(Lesson course) {
-        lessons.remove(course.getId());
+    public void delete(Lesson lesson) {
+        lessons.remove(lesson.getId());
     }
 
     @Override
