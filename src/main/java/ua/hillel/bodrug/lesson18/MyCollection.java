@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public class MyCollection implements Collection {
-    private Object[] objects;
+    private Object[] objects = new Object[0];
 
     public void setObjects(Object[] objects) {
         this.objects = objects;
@@ -17,19 +17,13 @@ public class MyCollection implements Collection {
 
     @Override
     public boolean isEmpty() {
-        boolean isEmpty = true;
-        for (Object object : objects) {
-            if (object != null){
-                isEmpty = false;
-            }
-        }
-        return isEmpty;
+        return size()==0;
     }
 
     @Override
     public boolean contains(Object o) {
         for (Object object : objects) {
-            if (object == o){
+            if (object.equals(o)){
                 return true;
             }
         }
@@ -38,26 +32,50 @@ public class MyCollection implements Collection {
 
     @Override
     public Iterator iterator() {
-        return null;
+        return new Iterator() {
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+
+                return index < objects.length;
+
+            }
+
+            @Override
+            public Object next() {
+                if (index==objects.length){
+                    throw new IndexOutOfBoundsException("ooohhh");
+                }
+                Object result = objects[index];
+                index++;
+                return result;
+
+
+            }
+        };
+
     }
 
     @Override
     public Object[] toArray() {
-        return objects;
+        Object[] newObjects = new Object[size()];
+        for (Object object : objects) {
+            add(object);
+        }
+        return newObjects;
     }
 
     @Override
     public boolean add(Object o) {
-        if(objects==null| o==null){
-            return false;
-        }
 
         Object[] newObjects = new Object[objects.length+1];
         for (int i = 0; i < objects.length; i++) {
             newObjects[i] = objects[i];
         }
         newObjects[objects.length] = o;
-        setObjects(newObjects);
+        objects = newObjects;
+        //setObjects(newObjects);
         return true;
     }
 
@@ -83,15 +101,17 @@ public class MyCollection implements Collection {
 
     @Override
     public boolean addAll(Collection c) {
-        return false;
+        for (Object o : c){
+            add(o);
+
+        }
+        return true;
+        //return false;
     }
 
     @Override
     public void clear() {
-        for (Object object : objects) {
-            object = null;
-        }
-        setObjects(objects);
+        objects = new Object[0];
     }
 
     @Override
@@ -111,12 +131,38 @@ public class MyCollection implements Collection {
 
     @Override
     public Object[] toArray(Object[] a) {
-        return objects;
+        return a;
     }
 
     public  void print(){
         for (Object object : objects) {
             System.out.println(object);;
+        }
+    }
+
+    private static class Palec implements Iterator {
+        private final Object[] objects;
+        private int index = 0;
+        public Palec(Object[] objects){
+            this.objects = objects;
+        }
+        @Override
+        public boolean hasNext() {
+
+            return index < objects.length;
+
+        }
+
+        @Override
+        public Object next() {
+            if (index==objects.length){
+                throw new IndexOutOfBoundsException("ooohhh");
+            }
+            Object result = objects[index];
+            index++;
+            return result;
+
+
         }
     }
 }

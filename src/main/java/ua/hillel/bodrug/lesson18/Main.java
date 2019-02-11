@@ -1,5 +1,6 @@
 package ua.hillel.bodrug.lesson18;
 
+import java.util.Iterator;
 import java.util.Objects;
 
 public class Main {
@@ -13,10 +14,16 @@ public class Main {
         myCollection.add(4);
         myCollection.add(5);
         myCollection.add(6);
-        myCollection.print();
-        System.out.println("-----------------");
-        myCollection.remove(7);
-        myCollection.print();
+        //myCollection.print();
+        //System.out.println("-----------------");
+        //myCollection.remove(7);
+        //myCollection.print();
+
+        Iterator iterator = myCollection.iterator();
+        while (iterator.hasNext()){
+            Object o = iterator.next();
+            System.out.println(o);
+        }
 
     }
 }
