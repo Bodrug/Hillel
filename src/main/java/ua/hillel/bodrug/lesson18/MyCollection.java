@@ -1,14 +1,15 @@
 package ua.hillel.bodrug.lesson18;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
 public class MyCollection implements Collection {
-    private Object[] objects = new Object[0];
-
     public void setObjects(Object[] objects) {
         this.objects = objects;
     }
+
+    private Object[] objects = new Object[0];
 
     @Override
     public int size() {
@@ -17,13 +18,13 @@ public class MyCollection implements Collection {
 
     @Override
     public boolean isEmpty() {
-        return size()==0;
+        return size() == 0;
     }
 
     @Override
     public boolean contains(Object o) {
         for (Object object : objects) {
-            if (object.equals(o)){
+            if (object.equals(o)) {
                 return true;
             }
         }
@@ -44,7 +45,7 @@ public class MyCollection implements Collection {
 
             @Override
             public Object next() {
-                if (index==objects.length){
+                if (index == objects.length) {
                     throw new IndexOutOfBoundsException("ooohhh");
                 }
                 Object result = objects[index];
@@ -69,7 +70,7 @@ public class MyCollection implements Collection {
     @Override
     public boolean add(Object o) {
 
-        Object[] newObjects = new Object[objects.length+1];
+        Object[] newObjects = new Object[objects.length + 1];
         for (int i = 0; i < objects.length; i++) {
             newObjects[i] = objects[i];
         }
@@ -81,32 +82,29 @@ public class MyCollection implements Collection {
 
     @Override
     public boolean remove(Object o) {
-        if(objects==null| o==null | objects.length<=1){
-            return false;
-        }
-        if (this.contains(o)) {
+
+        if (contains(o)) {
             Object[] newObjects = new Object[objects.length - 1];
             int j = 0;
-            for (int i = 0; i < objects.length; i++) {
-                if (objects[i] != o) {
-                    newObjects[j] = objects[i];
+            for (Object object : objects) {
+                if (object != o) {
+                    newObjects[j] = object;
                     j++;
                 }
             }
-            setObjects(newObjects);
+            objects = newObjects;
             return true;
-        }
-        else return false;
+        } else return false;
     }
 
     @Override
     public boolean addAll(Collection c) {
-        for (Object o : c){
+        for (Object o : c) {
             add(o);
 
         }
         return true;
-        //return false;
+
     }
 
     @Override
@@ -116,36 +114,66 @@ public class MyCollection implements Collection {
 
     @Override
     public boolean retainAll(Collection c) {
-        return false;
+
+        Iterator iterator = c.iterator();
+        while (iterator.hasNext()) {
+            if (!contains(iterator.next())) {
+                remove(iterator);
+            }
+        }
+        return true;
     }
 
     @Override
     public boolean removeAll(Collection c) {
-        return false;
+
+        Iterator iterator = c.iterator();
+        while (iterator.hasNext()) {
+            if (contains(iterator.next())) {
+                remove(iterator);
+            }
+        }
+        return true;
+
     }
 
     @Override
     public boolean containsAll(Collection c) {
-        return false;
+
+        boolean cont = false;
+        Iterator iterator = c.iterator();
+        while (iterator.hasNext()) {
+            if (contains(iterator.next())) {
+                cont = true;
+            }
+            else cont=false;
+        }
+        return cont;
     }
 
     @Override
     public Object[] toArray(Object[] a) {
-        return a;
+        Object[] newObjects = new Object[1];
+        newObjects[0] = a;
+        return newObjects;
     }
 
-    public  void print(){
-        for (Object object : objects) {
-            System.out.println(object);;
-        }
+    @Override
+    public String toString() {
+        return "MyCollection{" +
+                "objects=" + Arrays.toString(objects) +
+                '}';
     }
 
-    private static class Palec implements Iterator {
+    //Здесь был палец
+    /*private static class Palec implements Iterator {
         private final Object[] objects;
         private int index = 0;
-        public Palec(Object[] objects){
+
+        public Palec(Object[] objects) {
             this.objects = objects;
         }
+
         @Override
         public boolean hasNext() {
 
@@ -155,7 +183,7 @@ public class MyCollection implements Collection {
 
         @Override
         public Object next() {
-            if (index==objects.length){
+            if (index == objects.length) {
                 throw new IndexOutOfBoundsException("ooohhh");
             }
             Object result = objects[index];
@@ -164,5 +192,5 @@ public class MyCollection implements Collection {
 
 
         }
-    }
+    }*/
 }
