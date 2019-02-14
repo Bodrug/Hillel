@@ -10,4 +10,5 @@ public interface CourseDao {
     void delete(Course course);
     Course findById(Integer id);
     List<Course> getAll();
+    //void saveToFile(Course course);
 }

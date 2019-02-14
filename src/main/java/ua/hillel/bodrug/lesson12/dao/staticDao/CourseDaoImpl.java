@@ -3,6 +3,10 @@ package ua.hillel.bodrug.lesson12.dao.staticDao;
 import ua.hillel.bodrug.lesson12.dao.interfaces.CourseDao;
 import ua.hillel.bodrug.lesson12.model.Course;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -41,4 +45,6 @@ public class CourseDaoImpl implements CourseDao{
     public List<Course> getAll() {
         return new ArrayList<>(courses.values());
     }
+
+
 }
