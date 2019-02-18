@@ -6,13 +6,11 @@ public class Main {
     public static void main(String[] args) {
 
         MyTreeSet myTreeSet = new MyTreeSet();
-        myTreeSet.add(1);
-        myTreeSet.add(2);
-        myTreeSet.add(3);
+        myTreeSet.add(5);
+        myTreeSet.add(8);
+        myTreeSet.add(6);
         myTreeSet.add(4);
-        System.out.println(myTreeSet);
+        myTreeSet.add(9);
 
-        TreeSet treeSet = new TreeSet();
-        //treeSet
     }
 }
