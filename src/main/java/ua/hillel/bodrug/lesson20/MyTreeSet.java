@@ -3,35 +3,28 @@ package ua.hillel.bodrug.lesson20;
 import java.util.Comparator;
 import java.util.Iterator;
 
-public class MyTreeSet<T> implements Comparator, Iterable<T> {
+public class MyTreeSet<T> implements Iterable {
     private Node head;
+
 
     private class Node {
         private T value;
         private Node left;
         private Node right;
+        private Node parent;
 
         public Node(T value) {
             this.value = value;
             this.left = null;
             this.right = null;
+            this.parent = null;
         }
     }
 
     public boolean add(T e) {
         if (head == null) {
             head = new Node(e);
-        } else if (head != null) {
-            if (compare(head.value, e) > 0) {
-                head.right = new Node(e);
-            } else {
-                if (compare(head.value, e) < 0) {
-                    head.right = new Node(e);
-                }
-            }
-
-        }
-
+        } else appendToTree(head, e);
         return true;
     }
 
@@ -41,6 +34,7 @@ public class MyTreeSet<T> implements Comparator, Iterable<T> {
         if (addInt < existing) {
             if (appendTo.left == null) {
                 Node newNode = new Node(add);
+                newNode.parent = appendTo;
                 appendTo.left = newNode;
             } else {
                 return appendToTree(appendTo.left, add);
@@ -50,6 +44,7 @@ public class MyTreeSet<T> implements Comparator, Iterable<T> {
             if (addInt > existing) {
                 if (appendTo.right == null) {
                     Node newNode = new Node(add);
+                    newNode.parent = appendTo;
                     appendTo.right = newNode;
                 } else {
                     return appendToTree(appendTo.right, add);
@@ -64,13 +59,43 @@ public class MyTreeSet<T> implements Comparator, Iterable<T> {
         return false;
     }
 
-        @Override
-        public Iterator<T> iterator () {
-            return null;
-        }
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
 
-        @Override
-        public int compare (Object o1, Object o2){
-            return 0;
-        }
+            Node node = head;
+
+            @Override
+            public boolean hasNext() {
+                return node.left != null | node.right != null;
+                //return node.parent != null;
+            }
+
+            @Override
+            public T next() {
+
+                if (node == null)
+                    return null;
+                else if (node.right != null) {
+                    Node p = node.right;
+                    while (p.left != null)
+                        p = p.left;
+                    node = p;
+                    return p.value;
+
+                } else {
+                    Node p = node.parent;
+                    Node ch = node;
+                    while (p != null && ch == p.right) {
+                        ch = p;
+                        p = p.parent;
+                        node = p;
+                    }
+                    return p.value;
+                }
+
+            }
+        };
     }
+
+}
