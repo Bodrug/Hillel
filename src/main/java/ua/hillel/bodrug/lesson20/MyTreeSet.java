@@ -15,9 +15,6 @@ public class MyTreeSet<T> implements Iterable {
 
         public Node(T value) {
             this.value = value;
-            this.left = null;
-            this.right = null;
-            this.parent = null;
         }
     }
 
@@ -63,12 +60,18 @@ public class MyTreeSet<T> implements Iterable {
     public Iterator<T> iterator() {
         return new Iterator<T>() {
 
-            Node node = head;
+            Node node = getLastNode(head);
+
+            private Node getLastNode(Node node) {
+                if (node.left!=null){
+                    getLastNode(node.left);
+                }
+                return node;
+            }
 
             @Override
             public boolean hasNext() {
-                return node.left != null | node.right != null;
-                //return node.parent != null;
+                return node.parent != null;
             }
 
             @Override
@@ -76,8 +79,8 @@ public class MyTreeSet<T> implements Iterable {
 
                 if (node == null)
                     return null;
-                else if (node.right != null) {
-                    Node p = node.right;
+                else if (node.left != null) {
+                    Node p = node.left;
                     while (p.left != null)
                         p = p.left;
                     node = p;
@@ -97,5 +100,7 @@ public class MyTreeSet<T> implements Iterable {
             }
         };
     }
+
+
 
 }
