@@ -19,9 +19,10 @@ public class Main {
         myTreeSet.add(37);
 
         Iterator it = myTreeSet.iterator();
-        while (it.hasNext()){
+        /*while (it.hasNext()){
             System.out.println(it.next());
-        }
+        }*/
+        System.out.println(it.next());
 
 
     }

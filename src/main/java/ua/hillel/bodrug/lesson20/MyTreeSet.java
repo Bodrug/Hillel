@@ -60,13 +60,16 @@ public class MyTreeSet<T> implements Iterable {
     public Iterator<T> iterator() {
         return new Iterator<T>() {
 
-            Node node = getLastNode(head);
+            private Node node = getLastNode(head);
 
-            private Node getLastNode(Node node) {
-                if (node.left!=null){
-                    getLastNode(node.left);
+            private Node getLastNode(Node node1) {
+                if (node1.left!=null){
+                    Node n = getLastNode(node1.left);
+                    System.out.println(n.value);
+                    return n;
+                }else{
+                    return node1;
                 }
-                return node;
             }
 
             @Override
