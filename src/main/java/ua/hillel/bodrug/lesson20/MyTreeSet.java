@@ -1,31 +1,30 @@
 package ua.hillel.bodrug.lesson20;
 
-import java.util.Comparator;
 import java.util.Iterator;
 
-public class MyTreeSet<T> implements Iterable {
+public class MyTreeSet<E> implements Iterable {
     private Node head;
 
 
     private class Node {
-        private T value;
+        private E value;
         private Node left;
         private Node right;
         private Node parent;
 
-        public Node(T value) {
+        public Node(E value) {
             this.value = value;
         }
     }
 
-    public boolean add(T e) {
+    public boolean add(E e) {
         if (head == null) {
             head = new Node(e);
         } else appendToTree(head, e);
         return true;
     }
 
-    private boolean appendToTree(Node appendTo, T add) {
+    private boolean appendToTree(Node appendTo, E add) {
         Integer existing = (Integer) appendTo.value;
         Integer addInt = (Integer) add;
         if (addInt < existing) {
@@ -57,17 +56,17 @@ public class MyTreeSet<T> implements Iterable {
     }
 
     @Override
-    public Iterator<T> iterator() {
-        return new Iterator<T>() {
-
+    public Iterator<E> iterator() {
+        return new Iterator<E>() {
+            private Node currentNode;
             private Node node = getLastNode(head);
 
             private Node getLastNode(Node node1) {
-                if (node1.left!=null){
+                if (node1.left != null) {
                     Node n = getLastNode(node1.left);
                     System.out.println(n.value);
                     return n;
-                }else{
+                } else {
                     return node1;
                 }
             }
@@ -78,32 +77,51 @@ public class MyTreeSet<T> implements Iterable {
             }
 
             @Override
-            public T next() {
-
-                if (node == null)
-                    return null;
-                else if (node.left != null) {
-                    Node p = node.left;
-                    while (p.left != null)
-                        p = p.left;
-                    node = p;
-                    return p.value;
-
-                } else {
-                    Node p = node.parent;
-                    Node ch = node;
-                    while (p != null && ch == p.right) {
-                        ch = p;
-                        p = p.parent;
-                        node = p;
+            public E next() {
+                if (node.right != null&&node!=currentNode) {
+                    currentNode = node;
+                    this.node = node.right;
+                    while (node.left != null) {
+                        this.node = node.left;
                     }
-                    return p.value;
+                    return node.value;
+                } else {
+                    if(currentNode==null) {
+                        E value = node.value;
+                        this.node = node.parent;
+                        return value;
+                    }
+                    else {
+                        this.node = node.parent;
+                        return node.value;
+                    }
                 }
+//                if (node == null)
+//                    return null;
+//                else if (node.left != null) {
+//                    Node p = node.left;
+//                    while (p.left != null)
+//                        p = p.left;
+//                    node = p;
+//                    return p.value;
+//
+//                } else {
+//                    Node p = node.parent;
+//                    Node ch = node;
+//                    while (p != null && ch == p.right) {
+//                        ch = p;
+//                        p = p.parent;
+//                        node = p;
+//                    }
+//                    return p.value;
+//                }
+
 
             }
-        };
-    }
+        }
 
+                ;
+    }
 
 
 }
