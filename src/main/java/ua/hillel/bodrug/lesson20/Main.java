@@ -6,17 +6,19 @@ public class Main {
     public static void main(String[] args) {
 
         MyTreeSet myTreeSet = new MyTreeSet();
-        myTreeSet.add(25);
-        myTreeSet.add(17);
-        myTreeSet.add(39);
-        myTreeSet.add(15);
-        myTreeSet.add(35);
-        myTreeSet.add(47);
+        myTreeSet.add(99);
+        myTreeSet.add(21);
+        myTreeSet.add(34);
+        myTreeSet.add(1);
+        myTreeSet.add(250);
+        myTreeSet.add(88);
+        myTreeSet.add(65);
+        myTreeSet.add(70);
+        myTreeSet.add(70);
+        myTreeSet.add(22);
         myTreeSet.add(20);
-        myTreeSet.add(27);
-        myTreeSet.add(19);
-        myTreeSet.add(40);
-        myTreeSet.add(37);
+        myTreeSet.add(98);
+        myTreeSet.add(41);
 
         Iterator it = myTreeSet.iterator();
         while (it.hasNext()){

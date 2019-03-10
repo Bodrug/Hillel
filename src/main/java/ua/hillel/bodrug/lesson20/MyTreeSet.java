@@ -11,6 +11,7 @@ public class MyTreeSet<E> implements Iterable {
         private Node left;
         private Node right;
         private Node parent;
+        private boolean isIterated;
 
         public Node(E value) {
             this.value = value;
@@ -58,14 +59,25 @@ public class MyTreeSet<E> implements Iterable {
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            private Node currentNode;
+            //private Node currentNode;
+            private boolean theEnd;
             private Node node = getLastNode(head);
+            private Node max = getMax(head);
+
+            private Node getMax(Node head) {
+                while (head.right != null) {
+                    return getMax(head.right);
+                }
+                return head;
+            }
+
+            private boolean doneLeft = false;
+            private boolean doneRight = false;
 
             private Node getLastNode(Node node1) {
                 if (node1.left != null) {
-                    Node n = getLastNode(node1.left);
-                    System.out.println(n.value);
-                    return n;
+                    //System.out.println(n.value);
+                    return getLastNode(node1.left);
                 } else {
                     return node1;
                 }
@@ -73,55 +85,48 @@ public class MyTreeSet<E> implements Iterable {
 
             @Override
             public boolean hasNext() {
-                return node.parent != null;
+
+//                boolean theEnd;
+//                if (node.parent == head && node.parent.isIterated && node.isIterated) {
+//                    theEnd = true;
+//                } else {
+//                    theEnd = false;
+//                }
+//                return !theEnd;
+                return !theEnd;
             }
 
             @Override
             public E next() {
-                if (node.right != null&&node!=currentNode) {
-                    currentNode = node;
-                    this.node = node.right;
-                    while (node.left != null) {
-                        this.node = node.left;
-                    }
+                if (node == max) {
+                    theEnd = true;
                     return node.value;
-                } else {
-                    if(currentNode==null) {
-                        E value = node.value;
-                        this.node = node.parent;
-                        return value;
-                    }
-                    else {
-                        this.node = node.parent;
-                        return node.value;
-                    }
                 }
-//                if (node == null)
-//                    return null;
-//                else if (node.left != null) {
-//                    Node p = node.left;
-//                    while (p.left != null)
-//                        p = p.left;
-//                    node = p;
-//                    return p.value;
-//
-//                } else {
-//                    Node p = node.parent;
-//                    Node ch = node;
-//                    while (p != null && ch == p.right) {
-//                        ch = p;
-//                        p = p.parent;
-//                        node = p;
-//                    }
-//                    return p.value;
-//                }
 
+                if (node == head && !doneLeft) {
+                    doneLeft = true;
+                }
 
+                if (node.right != null) {
+                    Node val = node;
+                    val.isIterated = true;
+                    node = getLastNode(node.right);
+                    return val.value;
+                }
+                else {
+                    Node val = node;
+                    val.isIterated= true;
+                    node = getNotIteratedParent(node);
+                    return val.value;
+                }
             }
-        }
-
-                ;
+            private Node getNotIteratedParent(Node parent) {
+                while (true) {
+                    if (!parent.parent.isIterated) {
+                        return parent.parent;
+                    } else return getNotIteratedParent(parent.parent);
+                }
+            }
+        };
     }
-
-
 }
