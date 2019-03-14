@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ua.hillel</groupId>
-    <artifactId>lesson10</artifactId>
+    <artifactId>hillel</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
@@ -14,6 +14,17 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.9.8</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.8</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
