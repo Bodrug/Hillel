@@ -3,7 +3,7 @@ package ua.hillel.bodrug.lesson19_1;
 import java.util.Iterator;
 
 public class MyList<T> implements Iterable<T> {
-
+    private int count = 0;
     private Node<T> head;
     private Node<T> tail;
 
@@ -21,9 +21,30 @@ public class MyList<T> implements Iterable<T> {
         else {
             tail.next = new Node<T>(e);
         }
+        count++;
         return true;
     }
 
+    public int size(){
+        return count;
+    }
+
+    public void clear(){
+        clearNode(head);
+    }
+
+    private void clearNode(Node node){
+        if(node.next!=null) {
+            Node newHead = node.next;
+            node.data = null;
+            count--;
+            clearNode(node.next);
+        }
+        else {
+            node.data = null;
+            count--;
+        }
+    }
     private Node<T> tail(){
         Node<T> node = head;
         while (node!=null && node.next!=null){
